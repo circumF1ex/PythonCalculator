@@ -1,35 +1,17 @@
-import os, time
-enabled = True
-os.system('cls')
-while enabled:
-    os.system('cls')
-    print('Простой калькулятор.')
-    print("1. Сложить два числа.")
-    print("2. Вычесть два числа.")
-    print("3. Умножить два числа.")
-    print("4. Разделить число а на в.")
-    print("5. Выход.")
+def n_less10_to_dec(number_str, base):
+    """Функция перевода числа из системы счисления с основанием < 10 в десятичную."""
+    return int(number_str, base)
 
-    n = int(input("Введите номер действия: "))
-
-    if 0 > n > 5:
-        a = int(input("Введите число а:"))
-        b = int(input("Введите число b:"))
-        if n == 1:
-            print("Результат:", a + b)
-            input("Нажмите Enter чтобы продолжить")
-        elif n == 2:
-            print("Результат:", a - b)
-            input("Нажмите Enter чтобы продолжить")
-        elif n == 3:
-            print("Результат:", a * b)
-            input("Нажмите Enter чтобы продолжить")
-        elif n == 4:
-            print("Результат:", a / b)
-            input("Нажмите Enter чтобы продолжить")
-        elif n == 5:
-            print('До скорых встреч!')
-            enabled = False
+def main():
+    print("--- Калькулятор систем счисления ---")
+    num = input("Введите число: ")
+    b = int(input("Введите основание исходной системы (2-9): "))
+    
+    if 2 <= b < 10:
+        result = n_less10_to_dec(num, b)
+        print(f"Результат в десятичной системе: {result}")
     else:
-        print('Повторите ввод!', end = ' ')
-        input("Нажмите Enter чтобы продолжить")
+        print("Ошибка: Основание должно быть меньше 10 и не меньше 2!")
+
+if __name__ == "__main__":
+    main()
